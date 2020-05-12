@@ -30,8 +30,6 @@ func (c *Client) BuildImage(spec *Spec) error {
 	fmt.Println("Building image", spec.Name)
 	ctx := context.Background()
 
-	//The correct way to do this is to get a tar byte stream by creating it in memory, however, the code in docker to
-	//do that doesn't compile because some fuckhead decided to change their github name from Sirupsen to sirupsen
 	cmd := exec.Command("/bin/bash", "-c", "tar -cvf .ractf.tar *")
 	cmd.Dir = spec.Path
 	err := cmd.Run()
